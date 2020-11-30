@@ -1,0 +1,69 @@
+﻿@model IEnumerable<WebApplication8.Models.UploadsModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.UserId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Subject_Code)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Subject_Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Study_Year)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Hashtags)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.File_Upload)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Subject_Code)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Subject_Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Study_Year)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Hashtags)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.File_Upload)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }, new { @class="btn btn-primary" }) |
+           
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id }, new { @class = "btn btn-danger" })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,80 @@
+﻿@model WebApplication8.Models.UploadsModel
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>UploadsModel</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.UserId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Subject_Code)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Subject_Code)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Subject_Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Subject_Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Study_Year)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Study_Year)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Hashtags)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Hashtags)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.File_Upload)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.File_Upload)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>
