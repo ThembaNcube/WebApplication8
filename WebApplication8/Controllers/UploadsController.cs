@@ -26,12 +26,30 @@ namespace WebApplication8.Controllers
         // GET: Uploads
         public ActionResult Index()
         {
+            
             List<UploadsModel> uploads = uploadsCollection.AsQueryable<UploadsModel>().ToList();
             return View(uploads);
         }
 
+        [HttpGet]
+        public ActionResult Index(string search)
+        {
+            ViewBag.search = search;
+            
+            List<UploadsModel> uploads = uploadsCollection.AsQueryable<UploadsModel>().ToList();
+            var fquery = from x in uploads select x;
+
+            if (!String.IsNullOrEmpty(search))
+            {
+                fquery = fquery.Where(x => x.Subject_Code.Contains(search) || x.Subject_Name.Contains(search) || x.Hashtags.Contains(search));
+            }
+            //List<UploadsModel> uploads = uploadsCollection.AsQueryable<UploadsModel>().ToList();
+            return View(fquery.ToList());
+        }
+
+
         // GET: Uploads/Details/5
-        
+
 
         // GET: Uploads/Create
         public ActionResult Create()
@@ -71,7 +89,7 @@ namespace WebApplication8.Controllers
             try
             {
 
-                var filter = Builders<UploadsModel>.Filter.Eq("_id", id);
+                var filter = Builders<UploadsModel>.Filter.Eq("_id", ObjectId.Parse(id));
                 //var filter = Builders<UploadsModel>.Filter.Eq("_id", uploads.Id);
                 var update = Builders<UploadsModel>.Update
                     .Set("UserId", uploads.UserId)

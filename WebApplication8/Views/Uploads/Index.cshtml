@@ -5,7 +5,16 @@
 }
 
 <h2>Index</h2>
+<form method="get">
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="search" placeholder="Search for a subject or hashtag" value="@ViewBag.search" name="search" />
+            <input type="submit" value="Search" class="btn btn-default" />
+           
+        </div>
+    </div>
 
+</form>
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>

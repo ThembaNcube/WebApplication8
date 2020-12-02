@@ -3,29 +3,54 @@
 }
 
 <div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+
 </div>
 
 <div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+    <div class="col-md-6">
+        <div>
+            <canvas id="uploadChart"></canvas>
+        </div>
+        <div>
+            <canvas id="categories"></canvas>
+        </div>
+
     </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-    </div>
+
 </div>
+
+@section scripts{
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+    <script type="text/javascript">
+        $(function () {
+
+            var ctx = document.getElementById("uploadChart").getContext('2d');
+            var uploadChart = new Chart(ctx, {
+                type: 'pie',
+                data: {
+                    labels: ["CPMG211", "CPMG212", "CPMG213", "CPMG214"],
+                    datasets: [{
+                        backgroundColor: ["#2ecc71", "#3494db", "#95a5a6", "9b59b6"],
+                        data: [5,10,1,20]
+                    }]
+                }
+            })
+
+            var btx = document.getElementById("categories").getContext('2d');
+            var categories = new Chart(btx, {
+                type: 'pie',
+                data: {
+                    labels: ["Apprenticeship", "Bursary", "Graduate Programe", "Internship", "Learnership"],
+                    datasets: [{
+                        backgroundColor: ["#00FFFF", "#00008B", "DC143C", "#8B0000", "#00BFFF"],
+                        data: [1, 1, 1, 1, 1]
+                    }]
+                }
+            })
+
+        })
+        
+        
+    </script>
+
+}
